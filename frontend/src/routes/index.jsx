@@ -1,15 +1,21 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
+import MenuPage from '../pages/MenuPage';
+import QueuePage from '../pages/QueuePage';
 
-/**
- * Semua route halaman didaftarin di sini. App.jsx cuma manggil
- * <AppRoutes /> ini, gak perlu tau detail path apa aja yang ada -
- * kalo nambah halaman baru, cukup import + tambah <Route> di sini.
- */
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      {/* Modul Pelanggan: Self-Order Menu (Tasya) */}
+      <Route path="/" element={<MenuPage />} />
+      <Route path="/menu" element={<MenuPage />} />
+
+      {/* Modul Pelanggan: Live Tracking & Antrian (Tasya) */}
+      <Route path="/antrian" element={<QueuePage />} />
+      <Route path="/track/:orderId" element={<QueuePage />} />
+
+      {/* Fallback */}
+      <Route path="*" element={<MenuPage />} />
     </Routes>
   );
 }
