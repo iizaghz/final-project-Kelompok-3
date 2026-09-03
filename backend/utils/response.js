@@ -1,10 +1,23 @@
 /**
- * Format response seragam buat semua endpoint: { code, success, message, data }.
- * Dipake di semua controller biar frontend selalu tau bentuk responsnya
- * kayak apa, gak beda-beda tiap endpoint.
+ * Helper respons JSON API terstandar
  */
-function sendResponse(res, { code = 200, success = true, message = '', data = null }) {
-  return res.status(code).json({ code, success, message, data });
-}
+const successResponse = (res, message, data = null, statusCode = 200) => {
+  return res.status(statusCode).json({
+    success: true,
+    message,
+    data,
+  });
+};
 
-module.exports = sendResponse;
+const errorResponse = (res, message, error = null, statusCode = 400) => {
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    error: error ? (error.message || error) : null,
+  });
+};
+
+module.exports = {
+  successResponse,
+  errorResponse,
+};
