@@ -3,9 +3,12 @@ const cors = require('cors');
 
 const config = require('./config/env');
 require('./config/db');
+const errorHandler = require('./middlewares/error.middleware');
 
-// Routes (Modul Iza: Kategori, Produk, & Gemini AI)
+// Routes (Modul Salwa & Iza)
 const healthRoutes = require('./routes/health.routes');
+const authRoutes = require('./routes/auth.routes');
+const displayRoutes = require('./routes/display.routes');
 const categoryRoutes = require('./routes/category.routes');
 const productRoutes = require('./routes/product.routes');
 
@@ -31,8 +34,11 @@ app.use((req, res, next) => {
 
 // 4. API Endpoints
 app.use('/health', healthRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/display', displayRoutes);
+app.use('/api/queue', displayRoutes);
 
 // 5. Root Route Info
 app.get('/', (req, res) => {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import DisplayPage from '../pages/DisplayPage';
 import ProductCard from '../components/ProductCard';
 import ProductDetailModal from '../components/ProductDetailModal';
 
@@ -39,7 +40,18 @@ function CatalogPreview() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="*" element={<CatalogPreview />} />
+      {/* Modul Salwa: Display TV Antrian Publik */}
+      <Route path="/" element={<DisplayPage />} />
+      <Route path="/display" element={<DisplayPage />} />
+      <Route path="/antrian" element={<DisplayPage />} />
+
+      {/* Modul Iza: Preview Komponen Katalog & Produk */}
+      <Route path="/catalog" element={<CatalogPreview />} />
+      <Route path="/katalog" element={<CatalogPreview />} />
+      <Route path="/produk" element={<CatalogPreview />} />
+
+      {/* Fallback */}
+      <Route path="*" element={<DisplayPage />} />
     </Routes>
   );
 }
