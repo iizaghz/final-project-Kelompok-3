@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DisplayPage from '../pages/DisplayPage';
+import CashierPage from '../pages/CashierPage';
 import ProductCard from '../components/ProductCard';
 import ProductDetailModal from '../components/ProductDetailModal';
 
@@ -44,6 +45,10 @@ function AppRoutes() {
       <Route path="/" element={<DisplayPage />} />
       <Route path="/display" element={<DisplayPage />} />
       <Route path="/antrian" element={<DisplayPage />} />
+
+      {/* Modul Putri: Manajemen Pesanan Kasir & Konfirmasi Pembayaran */}
+      <Route path="/kasir" element={<CashierPage />} />
+      <Route path="/orders" element={<CashierPage />} />
 
       {/* Modul Iza: Preview Komponen Katalog & Produk */}
       <Route path="/catalog" element={<CatalogPreview />} />

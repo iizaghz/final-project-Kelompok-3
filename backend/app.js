@@ -5,12 +5,13 @@ const config = require('./config/env');
 require('./config/db');
 const errorHandler = require('./middlewares/error.middleware');
 
-// Routes (Modul Salwa & Iza)
+// Routes (Modul Salwa, Iza, & Putri)
 const healthRoutes = require('./routes/health.routes');
 const authRoutes = require('./routes/auth.routes');
-const displayRoutes = require('./routes/display.routes');
 const categoryRoutes = require('./routes/category.routes');
 const productRoutes = require('./routes/product.routes');
+const orderRoutes = require('./routes/order.routes');
+const displayRoutes = require('./routes/display.routes');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 app.use('/api/display', displayRoutes);
 app.use('/api/queue', displayRoutes);
 
