@@ -2,9 +2,17 @@ const express = require('express');
 const cors = require('cors');
 
 const config = require('./config/env');
-// Routes (Modul Tasya: Self-Order, Keranjang, Checkout, & Payment Gateway)
+require('./config/db');
+const errorHandler = require('./middlewares/error.middleware');
+
+// Routes (Modul Lengkap: Salwa, Iza, Putri, & Tasya)
 const healthRoutes = require('./routes/health.routes');
+const authRoutes = require('./routes/auth.routes');
+const categoryRoutes = require('./routes/category.routes');
+const productRoutes = require('./routes/product.routes');
+const orderRoutes = require('./routes/order.routes');
 const paymentRoutes = require('./routes/payment.routes');
+const displayRoutes = require('./routes/display.routes');
 
 const app = express();
 
@@ -28,7 +36,13 @@ app.use((req, res, next) => {
 
 // 4. API Endpoints
 app.use('/health', healthRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/display', displayRoutes);
+app.use('/api/queue', displayRoutes);
 
 // 5. Root Route Info
 app.get('/', (req, res) => {
