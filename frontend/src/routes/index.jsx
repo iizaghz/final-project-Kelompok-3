@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import MenuPage from '../pages/MenuPage';
+import QueuePage from '../pages/QueuePage';
 import DisplayPage from '../pages/DisplayPage';
 import CashierPage from '../pages/CashierPage';
 import ProductCard from '../components/ProductCard';
@@ -41,22 +43,30 @@ function CatalogPreview() {
 function AppRoutes() {
   return (
     <Routes>
-      {/* Modul Salwa: Display TV Antrian Publik */}
-      <Route path="/" element={<DisplayPage />} />
-      <Route path="/display" element={<DisplayPage />} />
-      <Route path="/antrian" element={<DisplayPage />} />
+      {/* Modul Pelanggan: Self-Order Menu & Checkout (Tasya) */}
+      <Route path="/" element={<MenuPage />} />
+      <Route path="/menu" element={<MenuPage />} />
 
-      {/* Modul Putri: Manajemen Pesanan Kasir & Konfirmasi Pembayaran */}
+      {/* Modul Pelanggan: Live Tracking & Antrian Mandiri (Tasya) */}
+      <Route path="/antrian" element={<QueuePage />} />
+      <Route path="/track/:orderId" element={<QueuePage />} />
+
+      {/* Modul Kasir: Manajemen Pesanan & Operasional (Putri) */}
       <Route path="/kasir" element={<CashierPage />} />
       <Route path="/orders" element={<CashierPage />} />
 
-      {/* Modul Iza: Preview Komponen Katalog & Produk */}
+      {/* Modul Display TV: Layar Pemanggil Antrian Publik Kafe (Salwa) */}
+      <Route path="/display" element={<DisplayPage />} />
+      <Route path="/tv" element={<DisplayPage />} />
+      <Route path="/display-antrian" element={<DisplayPage />} />
+
+      {/* Modul Produk & Kategori: Preview Komponen (Iza) */}
       <Route path="/catalog" element={<CatalogPreview />} />
       <Route path="/katalog" element={<CatalogPreview />} />
       <Route path="/produk" element={<CatalogPreview />} />
 
       {/* Fallback */}
-      <Route path="*" element={<DisplayPage />} />
+      <Route path="*" element={<MenuPage />} />
     </Routes>
   );
 }
