@@ -1,15 +1,17 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
+import DisplayPage from '../pages/DisplayPage';
 
-/**
- * Semua route halaman didaftarin di sini. App.jsx cuma manggil
- * <AppRoutes /> ini, gak perlu tau detail path apa aja yang ada -
- * kalo nambah halaman baru, cukup import + tambah <Route> di sini.
- */
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      {/* Modul Salwa: Display TV Antrian Publik */}
+      <Route path="/" element={<DisplayPage />} />
+      <Route path="/display" element={<DisplayPage />} />
+      <Route path="/antrian" element={<DisplayPage />} />
+
+      {/* Fallback */}
+      <Route path="*" element={<DisplayPage />} />
     </Routes>
   );
 }
